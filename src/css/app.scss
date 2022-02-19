@@ -1,1 +1,65 @@
 // app global css in SCSS form
+@font-face {
+  font-family: 'Open Sans';
+  src: url("../assets/fonts/OpenSans-Medium.ttf");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url("../assets/fonts/OpenSans-Regular.ttf");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url("../assets/fonts/OpenSans-Bold.ttf");
+  font-weight: 600;
+}
+
+p,
+a,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+label,
+textarea,
+span,
+li,
+body {
+  font-weight: 400;
+  font-family: 'Open Sans', sans-serif;
+}
+
+html {
+  font-size: 16px;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a {
+  /** reset default margin */
+  margin: 0px;
+}
+
+.h-fit-content {
+  height: fit-content;
+}
+
+::selection {
+  color: $white;
+  background: $dark;
+}
+
+.text-weight-500 {
+  font-weight: 500;
+}
