@@ -10,6 +10,7 @@
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
+    "@desislavsd/vue-teleport": "^0.1.2",
     "@quasar/extras": "^1.9.12",
     "core-js": "^3.6.5",
     "moment": "^2.29.1",

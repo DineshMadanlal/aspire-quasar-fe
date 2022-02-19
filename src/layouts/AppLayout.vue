@@ -1,8 +1,17 @@
 <template>
   <q-layout view="Lhh lpR lFf" class="app-layout">
     <!-- Header -->
-    <q-header class="app-layout-header">
+    <q-header
+      v-if="showAppheader"
+      class="app-layout-header"
+    >
       <q-toolbar class="app-header-toolbar">
+        <!-- All teleport heaer -->
+        <v-teleport-location
+          name="appHeaderTeleport"
+          tag="div"
+          class="app-header-teleport"
+        />
       </q-toolbar>
     </q-header>
 
@@ -108,6 +117,9 @@
 </template>
 
 <script>
+// npm
+import { vTeleportLocation } from '@desislavsd/vue-teleport';
+
 export default {
   name: 'AppLayout',
   data() {
@@ -115,9 +127,16 @@ export default {
       sidebarOpen: false,
     };
   },
+  components: {
+    vTeleportLocation,
+  },
   computed: {
     activeRoutePath() {
       return this.$route.path;
+    },
+    showAppheader() {
+      /** For now, the header is visible only for the cards page */
+      return this.activeRoutePath === '/cards';
     },
     // ----- STATIC DATA BEGIN ----
     appRoutes() {
