@@ -43,7 +43,7 @@
       <!-- Card Details -->
       <div class="card-details-block">
         <h4 class="card-name-text">
-          Mark Henry
+          {{ cardObject.name }}
         </h4>
 
         <!-- Show card numbers -->
@@ -64,6 +64,7 @@
           v-else
           class="card-number-grid"
         >
+          <!-- We show 4 white dots(3 times) if the card is hidden -->
           <div
             v-for="(n, index) in 3"
             :key="`circle-digit-${n}-${index}`"
@@ -75,6 +76,7 @@
               class="white-circle-dot"
             />
           </div>
+          <!-- Last 4 digits -->
           <p
             class="card-number-text"
           >
@@ -85,7 +87,7 @@
         <!-- Card Validity -->
         <div class="card-validity-grid">
           <p class="card-validity-text">
-            Thru: 12/20
+            Thru: {{ cardExpiry }}
           </p>
 
           <p class="card-validity-text">
@@ -109,6 +111,9 @@
 </template>
 
 <script>
+// moment
+import moment from 'moment';
+
 export default {
   name: 'BankCard',
   data() {
@@ -116,14 +121,25 @@ export default {
       canShowCardNumber: false,
     };
   },
+  props: {
+    cardObject: {
+      type: Object,
+      default: () => {},
+      required: true,
+    },
+  },
   computed: {
     lastFourDigits() {
-      return 4444;
+      return this.cardObject.last4;
     },
     arrayOfCardDigits() {
-      return [
-        4444, 4444, 4444, this.lastFourDigits,
-      ];
+      /** Return array of length 4. Each element has 4 digits */
+      return this.cardObject.match(/.{1,4}/g);
+    },
+    cardExpiry() {
+      /** We reduce the year format from 4 digit to 2 digit here */
+      const yearFormat = moment(this.cardObject.exp_year, 'YYYY').format('YY');
+      return `${this.cardObject.exp_month}/${yearFormat}`;
     },
   },
 };
@@ -138,7 +154,7 @@ export default {
     font-size: 12px;
     color: $positive;
     line-height: 20px;
-    font-weight: bold;
+    font-weight: 700;
     @media (max-width: $breakpoint-xs-max) {
       font-weight: 500;
     }
@@ -174,7 +190,7 @@ export default {
 
       .card-name-text {
         font-size: 24px;
-        font-weight: bold;
+        font-weight: 700;
         line-height: 20px;
         letter-spacing: 0.8px;
         @media (max-width: $breakpoint-xs-max) {
@@ -218,7 +234,7 @@ export default {
           font-size: 14px;
           line-height: 19px;
           letter-spacing: 3.46px;
-          font-weight: bold;
+          font-weight: 700;
         }
       }
 
@@ -237,7 +253,7 @@ export default {
           font-size: 13px;
           line-height: 24px;
           letter-spacing: 0.31px;
-          font-weight: bold;
+          font-weight: 700;
         }
       }
     }

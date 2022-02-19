@@ -226,7 +226,7 @@ export default {
             }
             .feature-label-text {
               color: $positive;
-              font-weight: bold;
+              font-weight: 700;
             }
           }
         }

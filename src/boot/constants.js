@@ -5,3 +5,17 @@ export const CARD_CHARGE_TYPES = {
   CREDIT: 'CREDIT',
   DEBIT: 'DEBIT',
 };
+
+export const CARD_TYPES = {
+  DEBIT: 'DEBIT',
+  CREDIT: 'CREDIT',
+};
+
+export const CARD_TAB_OPTOINS = {
+  DEBIT_CARDS: {
+    name: 'debitcards', label: 'My debit cards',
+  },
+  COMPANY_CARDS: {
+    name: 'companycards', label: 'All company cards',
+  },
+};
