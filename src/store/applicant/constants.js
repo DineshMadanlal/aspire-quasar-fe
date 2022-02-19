@@ -12,7 +12,7 @@ export const INIT_STATE = {
       name: 'Trang Bùi',
       isFreezed: false,
       currency: 'S$',
-      accountBalance: 22750,
+      accountBalance: 42750,
       type: CARD_TYPES.CREDIT,
     },
     {

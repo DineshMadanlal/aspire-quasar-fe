@@ -47,7 +47,7 @@
           :key="`app-routes-${index}-${feature.label}`"
 
           class="flex items-center no-wrap app-project-route"
-          :class="{ active: activeRoutePath.includes(feature.route) }"
+          :class="{ active: activeRoutePath === feature.route }"
           :to="feature.route"
 
           clickable
@@ -110,6 +110,10 @@
     <!-- Footer -->
     <q-footer class="app-layout-footer">
       <q-toolbar class="app-footer-toolbar">
+        <AppFooter
+          :appRoutes="appRoutes"
+          :activeRoutePath="activeRoutePath"
+        />
       </q-toolbar>
     </q-footer>
 
@@ -129,6 +133,7 @@ export default {
   },
   components: {
     vTeleportLocation,
+    AppFooter: () => import('components/AppFooter'),
   },
   computed: {
     activeRoutePath() {
@@ -182,6 +187,16 @@ export default {
       display: flex;
     }
   }
+
+  .app-layout-header {
+    background: $dark;
+  }
+
+  .app-layout-footer {
+    padding: 8px 24px;
+    background: $white;
+    box-shadow: 0px 0px 2px 1px rgba($color: $black, $alpha: 0.08)
+  }
 }
 </style>
 
@@ -189,6 +204,9 @@ export default {
 /** The sidebar CSS should not be scoped for it to reflect in the browser */
 .app-layout {
   .app-layout-sidebar {
+    @media (max-width: $breakpoint-xs-max) {
+      display: none;
+    }
     .q-drawer--left {
       padding: 48px;
 

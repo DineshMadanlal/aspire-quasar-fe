@@ -87,11 +87,7 @@ export default {
   .cards-page-container {
     width: 100%;
     max-width: 905px;
-    .card-content, .cards-header-wrapper {
-      @media (max-width: $breakpoint-xs-max) {
-        display: none;
-      }
-    }
+
     .cards-header-wrapper {
       .card-tab-options {
         margin-top: 34px;
@@ -108,6 +104,22 @@ export default {
 
       @media (min-width: $breakpoint-md-min) {
         grid-template-columns: 414px 366px;
+      }
+
+      .card-left-grid {
+        display: grid;
+        grid-row-gap: 32px;
+      }
+
+      .card-right-grid {
+        display: grid;
+        grid-row-gap: 24px;
+      }
+    }
+
+    .card-content, .cards-header-wrapper {
+      @media (max-width: $breakpoint-xs-max) {
+        display: none;
       }
     }
   }
