@@ -23,10 +23,10 @@
         <img
           src="assets/app-full-logo.svg"
           svg-inline
-          alt="aspire logo"
           class="no-outline"
         />
       </router-link>
+
       <p class="app-desc-text">
         Trusted way of banking for 3,000+ SMEs and startups in Singapore
       </p>
@@ -44,33 +44,38 @@
           clickable
           v-ripple
         >
+          <!-- Adding if else because we use svg-inline-loader
+            and thus, we change the icon color based on if the route is
+            active. We do this way to prevent storing multiple icons for
+            active and normal state
+          -->
           <!-- home icon -->
           <img
             v-if="feature.icon === 'home'"
             src="assets/icons/home.svg"
             svg-inline
-            class="no-outline"
+            class="no-outline feature-icon"
           />
           <!-- card icon -->
           <img
             v-if="feature.icon === 'card'"
             src="assets/icons/card.svg"
             svg-inline
-            class="no-outline"
+            class="no-outline feature-icon"
           />
           <!-- credit icon -->
           <img
             v-if="feature.icon === 'credit'"
             src="assets/icons/credit.svg"
             svg-inline
-            class="no-outline"
+            class="no-outline feature-icon"
           />
           <!-- payments icon -->
           <img
             v-if="feature.icon === 'payments'"
             src="assets/icons/payments.svg"
             svg-inline
-            class="no-outline"
+            class="no-outline feature-icon"
           />
           <!-- settings icon -->
           <img
@@ -78,8 +83,9 @@
             src="assets/icons/settings.svg"
             svg-inline
             alt="settings"
-            class="no-outline"
+            class="no-outline feature-icon"
           />
+          <!-- Route label -->
           <p class="feature-label-text">
             {{ feature.label }}
           </p>
@@ -191,6 +197,18 @@ export default {
             line-height: 32px;
             color: $white;
             margin-left: 16px;
+          }
+
+          &.active {
+            .feature-icon {
+              path {
+                fill: $positive;
+              }
+            }
+            .feature-label-text {
+              color: $positive;
+              font-weight: bold;
+            }
           }
         }
       }
