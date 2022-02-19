@@ -1,5 +1,8 @@
 # Quasar App
-A Quasar Framework app - All-in-one finance for growing businesses.
+A Quasar Framework app - Aspire Code Challenge
+
+# Demo
+https://aspire-quasar-fe.netlify.app/
 
 ## Install the dependencies
 ```bash

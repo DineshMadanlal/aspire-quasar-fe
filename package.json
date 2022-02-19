@@ -1,8 +1,8 @@
 {
   "name": "aspire-quasar-fe",
   "version": "0.0.1",
-  "description": "All-in-one finance for growing businesses.",
-  "productName": "Aspire",
+  "description": "Made For startups and SMEs. Save time and money with business accounts, borderless payments, corporate cards, expense management, all in one.",
+  "productName": "All-in-one Finance For Growing Businesses | Aspire",
   "author": "Dinesh Madanlal <>",
   "private": true,
   "scripts": {

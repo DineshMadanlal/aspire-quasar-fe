@@ -9,22 +9,26 @@ export default {
   // Meta tags for SEO purpose
   meta() {
     return {
-      title: 'Aspire',
+      title: 'All-in-one Finance For Growing Businesses | Aspire',
       meta: {
         title: {
           name: 'title',
-          content: 'Aspire',
+          content: 'All-in-one Finance For Growing Businesses | Aspire',
         },
         ogTitle: {
           name: 'og:title',
-          content: 'All-in-one Finance For Growing Businesses',
+          content: 'All-in-one Finance For Growing Businesses | Aspire',
         },
         twitterTitle: {
           name: 'twitter:title',
-          content: 'All-in-one Finance For Growing Businesses',
+          content: 'All-in-one Finance For Growing Businesses |  Aspire',
         },
         description: {
           name: 'description',
+          content: 'Made For startups and SMEs. Save time and money with business accounts, borderless payments, corporate cards, expense management, all in one.',
+        },
+        ogDescription: {
+          name: 'og:description',
           content: 'Made For startups and SMEs. Save time and money with business accounts, borderless payments, corporate cards, expense management, all in one.',
         },
         twitterDescription: {

@@ -135,7 +135,7 @@ module.exports = function (/* ctx */) {
       manifest: {
         name: 'Aspire',
         short_name: 'Aspire',
-        description: 'All-in-one finance for growing businesses.',
+        description: 'Made For startups and SMEs. Save time and money with business accounts, borderless payments, corporate cards, expense management, all in one.',
         display: 'standalone',
         orientation: 'portrait',
         background_color: '#ffffff',
