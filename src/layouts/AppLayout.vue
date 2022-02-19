@@ -10,7 +10,7 @@
         <v-teleport-location
           name="appHeaderTeleport"
           tag="div"
-          class="app-header-teleport"
+          class="full-width"
         />
       </q-toolbar>
     </q-header>
@@ -190,6 +190,9 @@ export default {
 
   .app-layout-header {
     background: $dark;
+    .app-header-toolbar {
+      padding: 0px;
+    }
   }
 
   .app-layout-footer {

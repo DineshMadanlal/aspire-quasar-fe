@@ -147,6 +147,7 @@ export default {
 <style lang="scss" scoped>
 .bank-card-block {
   .card-number-btn {
+    min-width: 130px;
     border-radius: 6px 6px 0px 0px;
   }
   .action-btn-text {
@@ -167,7 +168,7 @@ export default {
     }
 
     background: $positive;
-    border-radius: 12px;
+    border-radius: 12px 0px 12px 12px;
     box-shadow: 12px 12px 12px 12px rgba($color: $black, $alpha: 0.08);
 
     &.card-freeze {

@@ -29,12 +29,38 @@
         </div>
       </q-card>
     </div>
+
+    <!-- Header teleport to the app layout -->
+    <v-teleport
+      to="appHeaderTeleport"
+      v-if="$q.screen.lt.sm"
+    >
+      <div class="card-header-for-mobile">
+        <!-- Card Balance -->
+        <CardBalance
+          :activeCardDetails="activeCardDetails"
+        />
+
+        <CardTabOptions
+          v-model="tabInput"
+        />
+
+        <CardsCarousel
+          v-model="activeCardIndex"
+
+          :allCards="filteredCards"
+        />
+      </div>
+    </v-teleport>
   </q-page>
 </template>
 
 <script>
 // vuex
 import { mapGetters } from 'vuex';
+
+// npm
+import { vTeleport } from '@desislavsd/vue-teleport';
 
 // constants
 import { CARD_TAB_OPTOINS, CARD_TYPES } from 'boot/constants';
@@ -49,6 +75,7 @@ export default {
     };
   },
   components: {
+    vTeleport,
     CardBalance: () => import('components/CardBalance'),
     CardTabOptions: () => import('components/CardTabOptions'),
     CardsCarousel: () => import('components/CardsCarousel'),
@@ -128,11 +155,67 @@ export default {
 
 <style lang="scss">
 .cards-page {
+  @media (max-width: $breakpoint-xs-max) {
+    background: $dark;
+  }
   .cards-page-container {
     .card-content {
       .bank-card-block {
         .bank-card {
           box-shadow: unset;
+        }
+      }
+    }
+  }
+}
+
+/** We're teleporting the header. Thus, it has no parent element. */
+.card-header-for-mobile {
+  width: 100%;
+  padding: 32px 24px;
+  background: $dark;
+  .card-balance-block {
+    .card-balance-text {
+      font-weight: 600;
+    }
+    .amount-text, .card-balance-text {
+      /** SORRY, we need to add important here to update the
+      CSS of the parent component */
+      color: $white !important;
+    }
+    .new-card-btn {
+      /** SORRY, we need to add important here to update the
+      CSS of the parent component */
+      background: $dark !important;
+      .add-circle-icon {
+        path {
+          fill: $secondary;
+        }
+      }
+      .new-card-btn-text {
+        /** SORRY, we need to add important here to update the
+          CSS of the parent component */
+        color: $secondary !important;
+        font-weight: 600;
+      }
+    }
+  }
+
+  .custom-tabs {
+    margin-top: 16px;
+    margin-bottom: 24px;
+    .q-tabs__content {
+      .q-tab {
+        &.q-tab--active {
+          .q-tab__label {
+            color: $white;
+          }
+        }
+
+        &.q-tab--inactive {
+          .q-tab__label {
+            color: rgba($color: $white, $alpha: 0.5);
+          }
         }
       }
     }

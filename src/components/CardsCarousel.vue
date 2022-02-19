@@ -93,6 +93,7 @@ export default {
 <style lang="scss" scoped>
 .cards-carousel {
   width: 100%;
+  background: inherit;
   .active-navigation {
     min-width: 16px;
     max-width: 16px;
