@@ -18,9 +18,9 @@
         >
           <q-icon
             :name="canShowCardNumber ? 'visibility_off' : 'visibility'"
-            class="cursor-pointer btn-text"
+            class="cursor-pointer action-btn-text"
           />
-          <p class="btn-text q-ml-xs">
+          <p class="action-btn-text q-ml-xs">
             {{ canShowCardNumber ? 'Hide card number' : 'Show card number' }}
           </p>
         </div>
@@ -134,11 +134,14 @@ export default {
   .card-number-btn {
     border-radius: 6px 6px 0px 0px;
   }
-  .btn-text {
+  .action-btn-text {
     font-size: 12px;
     color: $positive;
-    font-weight: 500;
     line-height: 20px;
+    font-weight: bold;
+    @media (max-width: $breakpoint-xs-max) {
+      font-weight: 500;
+    }
   }
   .bank-card {
     width: 100%;
@@ -215,6 +218,7 @@ export default {
           font-size: 14px;
           line-height: 19px;
           letter-spacing: 3.46px;
+          font-weight: bold;
         }
       }
 
