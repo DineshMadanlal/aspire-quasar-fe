@@ -134,12 +134,11 @@ export default {
     },
     arrayOfCardDigits() {
       /** Return array of length 4. Each element has 4 digits */
-      return this.cardObject.match(/.{1,4}/g);
+      return this.cardObject.number.match(/.{1,4}/g);
     },
     cardExpiry() {
       /** We reduce the year format from 4 digit to 2 digit here */
-      const yearFormat = moment(this.cardObject.exp_year, 'YYYY').format('YY');
-      return `${this.cardObject.exp_month}/${yearFormat}`;
+      return moment(`${this.cardObject.exp_month} ${this.cardObject.exp_year}`, 'MM YYYY').format('MM/YY');
     },
   },
 };

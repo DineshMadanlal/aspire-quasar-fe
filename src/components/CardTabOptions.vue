@@ -54,7 +54,7 @@ export default {
   },
   methods: {
     onTabInput() {
-      this.$emit('value', this.tabInput);
+      this.$emit('input', this.tabInput);
     },
   },
 };

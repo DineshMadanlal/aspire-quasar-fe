@@ -7,11 +7,11 @@
 
       <div class="flex no-wrap items-center">
         <p class="currency-text">
-          S$
+          {{ activeCardDetails.currency }}
         </p>
 
         <h4 class="amount-text">
-          {{ mx$getAmount(12500) }}
+          {{ mx$getAmount(activeCardDetails.accountBalance) }}
         </h4>
       </div>
     </div>
@@ -46,6 +46,13 @@ import NumbersMixin from 'src/mixins/numbers.mixin';
 export default {
   name: 'CardBalance',
   mixins: [NumbersMixin],
+  props: {
+    activeCardDetails: {
+      type: Object,
+      default: () => {},
+      require: true,
+    },
+  },
 };
 </script>
 

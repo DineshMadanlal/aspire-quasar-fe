@@ -4,6 +4,18 @@ import { CARD_TYPES } from 'boot/constants';
 export const INIT_STATE = {
   allCards: [
     {
+      id: '1b9d6bcd-bbfd-4b2d-9b5d-0b8dfbbd4bed',
+      exp_month: '08',
+      exp_year: 2023,
+      last4: '4242',
+      number: '4242424242424242',
+      name: 'Trang Bùi',
+      isFreezed: false,
+      currency: 'S$',
+      accountBalance: 22750,
+      type: CARD_TYPES.CREDIT,
+    },
+    {
       id: '9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d',
       exp_month: 8,
       exp_year: 2023,
