@@ -1,0 +1,12 @@
+# Fixes the page not found issue for the route
+[[redirects]]
+from = "/*"
+status = 200
+to = "/index.html"
+
+# Blocks iFrame loading of website
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"

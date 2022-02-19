@@ -1,0 +1,7 @@
+export const MAX_CARD_TRANSACTIONS_LIST = 4;
+
+export const CARD_CHARGE_TYPES = {
+  REFUND: 'REFUND',
+  CREDIT: 'CREDIT',
+  DEBIT: 'DEBIT',
+};
