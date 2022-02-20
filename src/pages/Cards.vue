@@ -241,10 +241,10 @@ export default {
       }
 
       @media (max-width: $breakpoint-md-max) {
-        grid-template-columns: 380px auto;
+        grid-template-columns: 360px auto;
       }
 
-      @media (max-width: $breakpoint-sm-max) {
+      @media only screen and (max-width: 1160px) {
         grid-template-columns: auto;
       }
 

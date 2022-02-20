@@ -21,7 +21,7 @@
       :width="340"
       show-if-above
       v-model="sidebarOpen"
-      :breakpoint="1160"
+      :breakpoint="930"
 
       side="left"
       class="app-layout-sidebar"
@@ -189,6 +189,13 @@ export default {
     }
   }
 
+  .app-layout-footer {
+    display: none;
+    @media only screen and (max-width: 930px) {
+      display: flex;
+    }
+  }
+
   .app-layout-header {
     background: $dark;
     .app-header-toolbar {
@@ -208,8 +215,11 @@ export default {
 /** The sidebar CSS should not be scoped for it to reflect in the browser */
 .app-layout {
   .app-layout-sidebar {
-    @media (max-width: $breakpoint-xs-max) {
-      display: none;
+    // @media (max-width: $breakpoint-sm-max) {
+    //   display: none;
+    // }
+    @media only screen and (max-width: 930px) {
+      display: flex;
     }
     .q-drawer--left {
       padding: 48px;
