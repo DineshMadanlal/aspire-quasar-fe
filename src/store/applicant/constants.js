@@ -42,6 +42,7 @@ export const INIT_STATE = {
   ],
   recentTransactions: [
     {
+      transactionId: '1b9d6bcd-bbfd-4b2d-9b5d-0b8dfbbd4be1',
       transactionTo: 'Hamleys',
       transactionDescription: 'Refund on debit card',
       amount: 150,
@@ -51,6 +52,7 @@ export const INIT_STATE = {
       category: 'Other',
     },
     {
+      transactionId: '1b9d6bcd-bbfd-4b2d-9b5d-0b8dfbbd4be2',
       transactionTo: 'Food Panda',
       transactionDescription: 'Charged to debit card',
       amount: 64,
@@ -60,15 +62,17 @@ export const INIT_STATE = {
       category: 'Food',
     },
     {
-      transactionTo: 'Uber',
+      transactionId: '1b9d6bcd-bbfd-4b2d-9b5d-0b8dfbbd4be3',
+      transactionTo: 'Air India',
       transactionDescription: 'Charged to debit card',
       amount: 103,
       currency: 'S$',
       isCredit: false,
       date: '2020-05-19T11:10:16+05:30',
-      category: 'Travels',
+      category: 'Flight',
     },
     {
+      transactionId: '1b9d6bcd-bbfd-4b2d-9b5d-0b8dfbbd4be4',
       transactionTo: 'Food Panda',
       transactionDescription: 'Charged to debit card',
       amount: 39,
@@ -78,6 +82,7 @@ export const INIT_STATE = {
       category: 'Food',
     },
     {
+      transactionId: '1b9d6bcd-bbfd-4b2d-9b5d-0b8dfbbd4be5',
       transactionTo: 'Indigo',
       transactionDescription: 'Charged to debit card',
       amount: 560,

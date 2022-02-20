@@ -46,7 +46,13 @@
         </div>
 
         <div class="card-right-grid">
+          <CardDetails
+            :cardDetails="activeCardDetails"
+          />
 
+          <RecentTransactions
+            :recentTransactions="recentTransactions"
+          />
         </div>
       </q-card>
     </div>
@@ -108,11 +114,13 @@ export default {
   },
   components: {
     vTeleport,
+    CardDetails: () => import('components/CardDetails'),
     CardBalance: () => import('components/CardBalance'),
     CardTabOptions: () => import('components/CardTabOptions'),
     CardsCarousel: () => import('components/CardsCarousel'),
     BankCardActions: () => import('components/BankCardActions'),
     AddCardModal: () => import('components/Modals/AddCard'),
+    RecentTransactions: () => import('components/RecentTransactions'),
   },
   computed: {
     ...mapGetters({
@@ -223,21 +231,33 @@ export default {
       display: grid;
       padding: 32px 40px;
       border-radius: 8px;
+      grid-column-gap: 46px;
+      grid-row-gap: 32px;
       border-radius: rgba(252, 252, 252, 1);
       box-shadow: 8px 8px 8px 8px rgba($color: $black, $alpha: 0.08);
 
-      @media (min-width: $breakpoint-md-min) {
+      @media (min-width: $breakpoint-lg-min) {
         grid-template-columns: 414px 366px;
+      }
+
+      @media (max-width: $breakpoint-md-max) {
+        grid-template-columns: 380px auto;
+      }
+
+      @media (max-width: $breakpoint-sm-max) {
+        grid-template-columns: auto;
       }
 
       .card-left-grid {
         display: grid;
         grid-row-gap: 32px;
+        height: fit-content;
       }
 
       .card-right-grid {
         display: grid;
         grid-row-gap: 24px;
+        height: fit-content;
       }
     }
 

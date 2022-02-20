@@ -102,6 +102,9 @@ export default {
 .cards-carousel {
   width: 100%;
   background: inherit;
+  .testimonial-carousel-slide {
+    padding: 0px;
+  }
   .active-navigation {
     min-width: 16px;
     max-width: 16px;

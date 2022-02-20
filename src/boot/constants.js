@@ -19,3 +19,15 @@ export const CARD_TAB_OPTOINS = {
     name: 'companycards', label: 'All company cards',
   },
 };
+
+export const TRANSACTION_ICONS = {
+  Other: {
+    icon: 'megaphone', bgColor: 'rgba(242, 81, 149, 0.1)',
+  },
+  Food: {
+    icon: 'file-storage', bgColor: 'rgba(0, 157, 255, 0.1)',
+  },
+  Flight: {
+    icon: 'flights', bgColor: 'rgba(0, 214, 181, 0.1)',
+  },
+};

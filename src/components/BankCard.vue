@@ -167,7 +167,6 @@ export default {
     border-radius: 12px;
     @media (max-width: $breakpoint-xs-max) {
       padding: 24px;
-      border-radius: 12px 0px 12px 12px;
     }
 
     background: $positive;
@@ -229,6 +228,16 @@ export default {
             height: 9px;
             border-radius: 100%;
             background: $white;
+            @media (max-width: $breakpoint-xs-max) {
+              min-width: 8px;
+              max-width: 8px;
+              height: 8px;
+            }
+            @media only screen and (max-width: 350px) {
+              min-width: 6px;
+              max-width: 6px;
+              height: 6px;
+            }
           }
         }
 

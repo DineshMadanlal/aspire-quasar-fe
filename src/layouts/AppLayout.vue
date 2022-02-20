@@ -21,6 +21,7 @@
       :width="340"
       show-if-above
       v-model="sidebarOpen"
+      :breakpoint="1160"
 
       side="left"
       class="app-layout-sidebar"
