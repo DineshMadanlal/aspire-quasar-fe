@@ -18,6 +18,7 @@
       :name="cardTabConstants.DEBIT_CARDS.name"
       :label="cardTabConstants.DEBIT_CARDS.label"
     />
+    <!-- Renders both credit and debit cards -->
     <q-tab
       :name="cardTabConstants.COMPANY_CARDS.name"
       :label="cardTabConstants.COMPANY_CARDS.label"

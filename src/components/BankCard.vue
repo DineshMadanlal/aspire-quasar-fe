@@ -13,6 +13,9 @@
         v-ripple:positive
         @click="canShowCardNumber = !canShowCardNumber"
       >
+        <!-- white rectangle only for mobile to match design requirements -->
+        <div class="white-rectangle" />
+        <!-- button label -->
         <div
           class="flex no-wrap items-center"
         >
@@ -149,7 +152,21 @@ export default {
 .bank-card-block {
   .card-number-btn {
     min-width: 130px;
+    position: relative;
     border-radius: 6px 6px 0px 0px;
+    .white-rectangle {
+      z-index: 2;
+      display: none;
+      height: 10px;
+      width: 10px;
+      right: 0px;
+      bottom: -10px;
+      background: white;
+      position: absolute;
+      @media (max-width: $breakpoint-xs-max) {
+        display: block;
+      }
+    }
   }
   .action-btn-text {
     font-size: 12px;
@@ -165,6 +182,7 @@ export default {
     padding: 27px;
     color: $white;
     border-radius: 12px;
+    z-index: 3;
     @media (max-width: $breakpoint-xs-max) {
       padding: 24px;
     }

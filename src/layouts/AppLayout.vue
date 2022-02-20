@@ -193,6 +193,8 @@ export default {
     display: none;
     @media only screen and (max-width: 930px) {
       display: flex;
+      /** zindex is important here to show footer on the
+      top of the page content */
       z-index: 2002;
     }
   }
@@ -216,11 +218,8 @@ export default {
 /** The sidebar CSS should not be scoped for it to reflect in the browser */
 .app-layout {
   .app-layout-sidebar {
-    // @media (max-width: $breakpoint-sm-max) {
-    //   display: none;
-    // }
     @media only screen and (max-width: 930px) {
-      display: flex;
+      display: none;
     }
     .q-drawer--left {
       padding: 48px;

@@ -75,7 +75,7 @@ export default {
           icon: 'freeze',
           label: this.isCardFreezed ? 'Unfreeze card' : 'Freeze card',
           emitAction: 'freeze',
-          maxWidth: this.isCardFreezed ? '50px' : '40px',
+          maxWidth: '48px',
         },
         {
           icon: 'speed',
@@ -121,6 +121,9 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
+    @media (max-width: $breakpoint-xs-max) {
+      padding: 8px 0px;
+    }
     .card-label-text {
       font-size: 13px;
       line-height: 14px;

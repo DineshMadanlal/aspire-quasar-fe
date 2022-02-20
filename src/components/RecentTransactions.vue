@@ -3,6 +3,7 @@
     v-model="expanded"
     class="recent-transactions-expansion"
     header-class="recent-transactions-expanded-header"
+    @input="onCardExpandInput"
   >
     <!-- Expansion Panel Header Slot -->
     <template v-slot:header>
@@ -112,6 +113,9 @@
 // moment
 import moment from 'moment';
 
+// helpers
+import { scrollDownToBottom } from 'boot/helpers';
+
 // constants
 import { MAX_CARD_TRANSACTIONS_LIST, TRANSACTION_ICONS } from 'boot/constants';
 
@@ -145,14 +149,24 @@ export default {
     },
   },
   methods: {
+    onCardExpandInput() {
+      /** adding set timeout as nextTick is not working. We
+       * add this here for good user experience.
+       */
+      setTimeout(() => {
+        if (this.expanded) {
+          scrollDownToBottom();
+        }
+      }, 200);
+    },
     onTransactionBtnClick() {
       this.showAllCardTransactions = !this.showAllCardTransactions;
 
       /** next tick is required here for smooth scrolling to the bottom */
       this.$nextTick(() => {
         if (this.showAllCardTransactions) {
-        /** scroll down to the bottom of the page */
-          window.scrollTo({ left: 0, top: document.body.scrollHeight, behavior: 'smooth' });
+          /** scroll down to the bottom of the page */
+          scrollDownToBottom();
         }
       });
     },

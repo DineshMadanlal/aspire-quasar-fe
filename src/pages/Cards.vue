@@ -79,6 +79,23 @@
           />
         </div>
       </q-card>
+      <!-- Renders on both mobile and desktop -->
+      <q-card
+        v-if="!activeCardDetails.id"
+        class="empty-card-content"
+      >
+        <p class="text-center q-mb-sm">
+          No cards found. Please add a new card.
+        </p>
+        <q-btn
+          no-caps
+          unelevated
+
+          label="New Card"
+          color="primary"
+          @click="showAddCardModal = true"
+        />
+      </q-card>
     </div>
 
     <!-- Header teleport to the app layout -->
@@ -236,8 +253,10 @@ export default {
   display: flex;
   justify-content: center;
   padding: 60px;
+  position: relative;
   @media (max-width: $breakpoint-xs-max) {
     padding: 0px;
+    background: $dark;
     /** IMPORTANT: for mobile scrolling through header */
     z-index: 2001;
   }
@@ -259,7 +278,6 @@ export default {
       border-radius: 8px;
       grid-column-gap: 46px;
       grid-row-gap: 32px;
-      border-radius: rgba(252, 252, 252, 1);
       box-shadow: 8px 8px 8px 8px rgba($color: $black, $alpha: 0.08);
 
       @media (min-width: $breakpoint-lg-min) {
@@ -300,6 +318,22 @@ export default {
         background: $white;
         display: grid;
         grid-row-gap: 24px;
+      }
+    }
+
+    .empty-card-content {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+      padding: 16px;
+      border-radius: 8px;
+      box-shadow: 8px 8px 8px 8px rgba($color: $black, $alpha: 0.08);
+      @media (max-width: $breakpoint-xs-max) {
+        position: absolute;
+        bottom: 0px;
+        border-radius: 20px 20px 0px 0px;
       }
     }
 

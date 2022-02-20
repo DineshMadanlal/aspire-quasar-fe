@@ -7,3 +7,5 @@ export const randomYear = () => Math.ceil(Math.random() * (2028 - 2023) + 2023);
 
 /** two digit random month */
 export const randomMonth = () => Math.ceil(Math.random() * (12 - 1) + 1).toString().padStart(2, '0');
+
+export const scrollDownToBottom = () => window.scrollTo({ left: 0, top: document.body.scrollHeight, behavior: 'smooth' });

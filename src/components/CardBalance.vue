@@ -1,6 +1,6 @@
 <template>
   <div class="card-balance-block">
-    <div>
+    <div v-if="activeCardDetails.accountBalance">
       <p class="card-balance-text">
         Account Balance
       </p>
