@@ -1,11 +1,19 @@
 <template>
   <q-page class="cards-page">
+    <!-- add card modal -->
+    <q-dialog v-model="showAddCardModal">
+      <AddCardModal
+        @addCard="addNewCard"
+      />
+    </q-dialog>
     <div class="cards-page-container">
       <!-- The header wrapper is hidden in mobile -->
       <div class="cards-header-wrapper">
         <!-- Card Balance -->
         <CardBalance
           :activeCardDetails="activeCardDetails"
+
+          @addNewCard="showAddCardModal = true"
         />
 
         <CardTabOptions
@@ -52,6 +60,8 @@
         <!-- Card Balance -->
         <CardBalance
           :activeCardDetails="activeCardDetails"
+
+          @addNewCard="showAddCardModal = true"
         />
 
         <CardTabOptions
@@ -88,8 +98,11 @@ export default {
   name: 'CardsPage',
   data() {
     return {
+      /** To view the active card details */
       activeCardIndex: 0,
-
+      /** boolean to show add card modal */
+      showAddCardModal: false,
+      /** We store tabInput to filter debit cards or all company cards */
       tabInput: CARD_TAB_OPTOINS.DEBIT_CARDS.name,
     };
   },
@@ -99,6 +112,7 @@ export default {
     CardTabOptions: () => import('components/CardTabOptions'),
     CardsCarousel: () => import('components/CardsCarousel'),
     BankCardActions: () => import('components/BankCardActions'),
+    AddCardModal: () => import('components/Modals/AddCard'),
   },
   computed: {
     ...mapGetters({
@@ -128,6 +142,26 @@ export default {
         field: 'allCards',
         value: allCards,
       });
+    },
+    addNewCard(newCardDetails) {
+      /** We clone it to prevent the vuex store mutating directly not from store */
+      const clonedAllCards = cloneDeep(this.allCards);
+      clonedAllCards.push(newCardDetails);
+      // update the store
+      this.updateAllCardsStore(clonedAllCards);
+
+      // close the modal
+      this.showAddCardModal = false;
+
+      // successs toaster
+      this.$q.notify({
+        position: 'top-right',
+        type: 'positive',
+        message: 'Added successfully',
+      });
+
+      /** The latest card added should be the active card */
+      this.activeCardIndex = this.filteredCards.length - 1;
     },
     onFreezeCard() {
       const arrayIndex = findIndex(this.allCards, (data) => data.id === this.activeCardDetails.id);

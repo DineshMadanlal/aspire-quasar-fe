@@ -23,6 +23,7 @@ module.exports = function (/* ctx */) {
     // https://v1.quasar.dev/quasar-cli/boot-files
     boot: [
       'constants',
+      'helpers',
       'persist-client',
     ],
 
