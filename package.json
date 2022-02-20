@@ -13,6 +13,7 @@
     "@desislavsd/vue-teleport": "^0.1.2",
     "@quasar/extras": "^1.9.12",
     "core-js": "^3.6.5",
+    "lodash": "^4.17.21",
     "moment": "^2.29.1",
     "numeral": "^2.0.6",
     "quasar": "^1.15.0",

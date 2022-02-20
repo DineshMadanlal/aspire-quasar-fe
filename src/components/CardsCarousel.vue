@@ -48,7 +48,7 @@
       v-for="(data, index) in allCards"
       :key="`card-details-${data.id}-${index}`"
 
-      :name="index + 1"
+      :name="index"
       class="testimonial-carousel-slide"
     >
       <BankCard
@@ -63,7 +63,7 @@ export default {
   name: 'CardsCarousel',
   data() {
     return {
-      slide: 1,
+      slide: 0,
     };
   },
   components: {
@@ -79,12 +79,20 @@ export default {
       default: null,
     },
   },
+  watch: {
+    value() {
+      if (this.slide !== this.value) {
+        /** On tab change, we update the active card index. */
+        this.slide = this.value;
+      }
+    },
+  },
   methods: {
     onCarouselInput() {
       /** Here, we update the parent component of which
        * index is active in the carousel
        */
-      this.$emit('input', this.slide - 1);
+      this.$emit('input', this.slide);
     },
   },
 };

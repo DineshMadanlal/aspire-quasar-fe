@@ -28,6 +28,7 @@
     </div>
     <q-card
       class="bank-card"
+      :class="{ 'card-freeze' : cardObject.isFreezed }"
     >
       <!-- aspire app logo -->
       <div class="flex no-wrap">
@@ -163,16 +164,17 @@ export default {
     width: 100%;
     padding: 27px;
     color: $white;
+    border-radius: 12px;
     @media (max-width: $breakpoint-xs-max) {
       padding: 24px;
+      border-radius: 12px 0px 12px 12px;
     }
 
     background: $positive;
-    border-radius: 12px 0px 12px 12px;
     box-shadow: 12px 12px 12px 12px rgba($color: $black, $alpha: 0.08);
 
     &.card-freeze {
-      background: #536DFF;
+      background: $secondary;
     }
 
     .app-logo {

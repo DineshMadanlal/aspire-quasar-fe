@@ -11,16 +11,29 @@
         <CardTabOptions
           v-model="tabInput"
           class="card-tab-options"
+
+          @input="onTabInput"
         />
       </div>
 
       <!-- card content wrapper -> hidden in mobile -->
-      <q-card class="card-content">
+      <q-card
+        class="card-content"
+
+        v-if="activeCardDetails.id"
+      >
         <div class="card-left-grid">
           <CardsCarousel
             v-model="activeCardIndex"
 
             :allCards="filteredCards"
+          />
+
+          <BankCardActions
+            :isCardFreezed="activeCardDetails.isFreezed"
+
+            @freeze="onFreezeCard"
+            @cancel="onCancelCard"
           />
         </div>
 
@@ -43,6 +56,8 @@
 
         <CardTabOptions
           v-model="tabInput"
+
+          @input="onTabInput"
         />
 
         <CardsCarousel
@@ -58,6 +73,10 @@
 <script>
 // vuex
 import { mapGetters } from 'vuex';
+
+// Lodash
+import findIndex from 'lodash/findIndex';
+import cloneDeep from 'lodash/cloneDeep';
 
 // npm
 import { vTeleport } from '@desislavsd/vue-teleport';
@@ -79,6 +98,7 @@ export default {
     CardBalance: () => import('components/CardBalance'),
     CardTabOptions: () => import('components/CardTabOptions'),
     CardsCarousel: () => import('components/CardsCarousel'),
+    BankCardActions: () => import('components/BankCardActions'),
   },
   computed: {
     ...mapGetters({
@@ -96,6 +116,49 @@ export default {
     },
     activeCardDetails() {
       return this.filteredCards[this.activeCardIndex] || {};
+    },
+  },
+  methods: {
+    onTabInput() {
+      this.activeCardIndex = 0;
+    },
+    updateAllCardsStore(allCards) {
+      // update the store
+      this.$store.commit('applicant/setField', {
+        field: 'allCards',
+        value: allCards,
+      });
+    },
+    onFreezeCard() {
+      const arrayIndex = findIndex(this.allCards, (data) => data.id === this.activeCardDetails.id);
+      /** We clone it to prevent the vuex store mutating directly not from store */
+      const clonedAllCards = cloneDeep(this.allCards);
+      /** We find index because we filter the cards by their type and thus
+       * the index changes
+       */
+      clonedAllCards[arrayIndex].isFreezed = !clonedAllCards[arrayIndex].isFreezed;
+      // update the store
+      this.updateAllCardsStore(clonedAllCards);
+    },
+    onCancelCard() {
+      this.$q.dialog({
+        title: 'Confirm',
+        message: 'Are you sure to cancel the card? This cannot be undone.',
+        cancel: true,
+      }).onOk(() => {
+        const arrayIndex = findIndex(
+          this.allCards, (data) => data.id === this.activeCardDetails.id,
+        );
+        /** We clone it to prevent the vuex store mutating directly not from store */
+        const clonedAllCards = cloneDeep(this.allCards);
+        // remove the card
+        clonedAllCards.splice(arrayIndex, 1);
+        /** reset the active card index to the next card index */
+        this.activeCardIndex = this.activeCardIndex
+          ? this.activeCardIndex - 1 : 0;
+        // update the store
+        this.updateAllCardsStore(clonedAllCards);
+      });
     },
   },
 };
