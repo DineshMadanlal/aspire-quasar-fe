@@ -55,6 +55,30 @@
           />
         </div>
       </q-card>
+
+      <!-- mobile card content -->
+      <q-card
+        class="mobile-card-content"
+
+        v-if="activeCardDetails.id"
+      >
+        <BankCardActions
+          :isCardFreezed="activeCardDetails.isFreezed"
+
+          @freeze="onFreezeCard"
+          @cancel="onCancelCard"
+        />
+        <!-- card container -->
+        <div class="mobile-card-container">
+          <CardDetails
+            :cardDetails="activeCardDetails"
+          />
+
+          <RecentTransactions
+            :recentTransactions="recentTransactions"
+          />
+        </div>
+      </q-card>
     </div>
 
     <!-- Header teleport to the app layout -->
@@ -214,6 +238,8 @@ export default {
   padding: 60px;
   @media (max-width: $breakpoint-xs-max) {
     padding: 0px;
+    /** IMPORTANT: for mobile scrolling through header */
+    z-index: 2001;
   }
 
   .cards-page-container {
@@ -261,6 +287,22 @@ export default {
       }
     }
 
+    .mobile-card-content {
+      display: none;
+      background: $dark;
+      border-radius: 0px;
+      @media (max-width: $breakpoint-xs-max) {
+        display: block;
+      }
+
+      .mobile-card-container {
+        padding: 24px;
+        background: $white;
+        display: grid;
+        grid-row-gap: 24px;
+      }
+    }
+
     .card-content, .cards-header-wrapper {
       @media (max-width: $breakpoint-xs-max) {
         display: none;
@@ -272,15 +314,17 @@ export default {
 
 <style lang="scss">
 .cards-page {
-  @media (max-width: $breakpoint-xs-max) {
-    background: $dark;
-  }
   .cards-page-container {
     .card-content {
       .bank-card-block {
         .bank-card {
           box-shadow: unset;
         }
+      }
+    }
+    .mobile-card-content {
+      .bank-card-actions {
+        border-radius: 32px 32px 0px 0px;
       }
     }
   }

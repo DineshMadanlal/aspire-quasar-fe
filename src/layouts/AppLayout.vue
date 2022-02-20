@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="Lhh lpR lFf" class="app-layout">
+  <q-layout view="LHh lpR lFf" class="app-layout">
     <!-- Header -->
     <q-header
       v-if="showAppheader"
@@ -193,6 +193,7 @@ export default {
     display: none;
     @media only screen and (max-width: 930px) {
       display: flex;
+      z-index: 2002;
     }
   }
 
