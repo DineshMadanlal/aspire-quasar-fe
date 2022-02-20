@@ -1,7 +1,7 @@
 <template>
   <q-page class="cards-page">
     <!-- add card modal -->
-    <q-dialog v-model="showAddCardModal">
+    <q-dialog persistent v-model="showAddCardModal">
       <AddCardModal
         @addCard="addNewCard"
       />

@@ -3,7 +3,7 @@
     <!-- header -->
     <div class="flex no-wrap items-center add-card-modal-header">
       <h4 class="card-header-text">
-        Add Card
+        New Card
       </h4>
 
       <q-space />
